@@ -1,8 +1,8 @@
-const COURSES_URL = "https://wbdv-generic-server.herokuapp.com/api/castanedar/courses"
+const COURSES_URL = "https://wbdv-generic-server.herokuapp.com/api/castanedar/courses2";
 
 const findAllCourses = () =>
   fetch(COURSES_URL)
-  .then(response => response.json())
+  .then(response => response.json());
 
 const createCourse = (course) =>
   fetch(COURSES_URL,{
@@ -12,14 +12,14 @@ const createCourse = (course) =>
       'content-type': 'application/json'
     }
   })
-  .then(response => response.json())
+  .then(response => response.json());
 
 
 const deleteCourse = (courseId) =>
   fetch(`${COURSES_URL}/${courseId}`,{
     method: 'DELETE'
   })
-  .then(response => response.json())
+  .then(response => response.json());
 
 const updateCourse = (courseId, course) =>
   fetch(`${COURSES_URL}/${courseId}`,{
@@ -29,7 +29,7 @@ const updateCourse = (courseId, course) =>
       'content-type': 'application/json'
     }
   })
-  .then(response => response.json())
+  .then(response => response.json());
 
 
 const api = {
@@ -39,4 +39,4 @@ const api = {
   updateCourse
 }
 
-export default api
+export default api;

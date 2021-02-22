@@ -1,0 +1,45 @@
+.rac-background-color{
+  background-color: #303030;
+}
+
+.nav-items{
+  padding-right: 40px;
+}
+
+.rac-large{
+  font-size: 25px;
+  color: white;
+}
+
+.container{
+  margin: 0;
+  padding: 0;
+}
+
+.rac-black-background-color{
+  padding: 35px;
+  background-color:black;
+}
+.rac-white{
+  color: white;
+}
+
+.rac-white-background-color{
+  padding-top: 15px;
+  background-color: white;
+}
+
+.rac-pill-formatting{
+  margin: 10px;
+  background-color: #303030;
+  padding-bottom:15px;
+  padding-top: 15px;
+}
+
+.rac-vertical-align{
+  padding-top: 10px;
+}
+
+.fas{
+  color: #808080;
+}

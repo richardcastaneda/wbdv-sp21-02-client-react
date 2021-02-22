@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import {Link} from "react-router-dom";
+import './courserow.style.client.css';
 
 const CourseRow = (
     {
@@ -10,16 +11,16 @@ const CourseRow = (
       owner,
       lastModified
     }) => {
-    const [editing, setEditing] = useState(false)
-    const [newTitle, setNewTitle] = useState(title)
+    const [editing, setEditing] = useState(false);
+    const [newTitle, setNewTitle] = useState(title);
 
     const saveTitle =() => {
-      setEditing(false)
+      setEditing(false);
       const newCourse = {
         ...course,
         title: newTitle
       }
-      updateCourse(newCourse)
+      updateCourse(newCourse);
     }
     return(
       <tr>
@@ -40,9 +41,9 @@ const CourseRow = (
       <td>{owner}</td>
       <td>{lastModified}</td>
       <td>
-        {editing && <i onClick={() => saveTitle()} className="fas fa-check"></i>}
-        {!editing && <i onClick={() => deleteCourse(course)} className="fas fa-trash"></i>}
-        {!editing && <i onClick={() => setEditing(true)} className="fas fa-edit"></i>}
+        {editing && <i onClick={() => saveTitle()} className="icon fas fa-check"></i>}
+        {!editing && <i onClick={() => deleteCourse(course)} className="delete icon fas fa-trash"></i>}
+        {!editing && <i onClick={() => {setNewTitle(title); setEditing(true)}} className="icon fas fa-edit"></i>}
       </td>
     </tr>)
     }

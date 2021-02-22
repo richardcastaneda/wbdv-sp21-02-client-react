@@ -1,9 +1,9 @@
-import React from 'react'
-import CourseTable from "./course-table";
-import CourseGrid from "./course-grid";
-import CourseEditor from "./course-editor"
+import React from 'react';
+import CourseTable from "./course-table/course-table";
+import CourseGrid from "./course-grid/course-grid";
+import CourseEditor from "./course-editor/course-editor"
 import {Route} from "react-router-dom";
-import courseService from "../services/course_service";
+import courseService from "../services/course-service";
 
 class CourseManager extends React.Component{
   state = {
@@ -11,30 +11,30 @@ class CourseManager extends React.Component{
   }
 
   updateCourse = (course) => {
-    console.log(course)
+    console.log(course);
     courseService.updateCourse(course._id, course)
     .then(status => this.setState((prevState) => ({
       ...prevState,
       courses: prevState.courses.map(c => {
         if (c._id === course._id) {
-          return course
+          return course;
         } else {
           return c;
         }
       })
-    })))
+    })));
   }
 
   componentDidMount = () =>
     courseService.findAllCourses()
-      .then(courses => this.setState({courses}))
+      .then(courses => this.setState({courses}));
 
   addCourse = () => {
     const newCourse = {
       title: "New Course",
       owner: "New Owner",
       lastModified: "Never"
-    }
+    };
     courseService.createCourse(newCourse)
     .then(course => this.setState(
         (prevState) => ({
@@ -43,7 +43,7 @@ class CourseManager extends React.Component{
             course,
           ...prevState.courses
       ]
-    })))
+    })));
   }
 
   deleteCourse = (courseToDelete) => {
@@ -53,16 +53,15 @@ class CourseManager extends React.Component{
         let newState = {...prevState}
         newState.courses =
           prevState.courses.filter(course => course !== courseToDelete)
-          return newState
+          return newState;
       })
-    })
+    });
   }
 
   render() {
     return(
         <div>
           <h1>Course Manager</h1>
-          <button onClick={this.addCourse}>Add Course</button>
           <Route path="/courses/table">
             <CourseTable
               updateCourse={this.updateCourse}
@@ -71,6 +70,7 @@ class CourseManager extends React.Component{
           </Route>
           <Route path="/courses/grid">
             <CourseGrid
+              updateCourse={this.updateCourse}
               deleteCourse={this.deleteCourse}
               courses={this.state.courses}/>
           </Route>
@@ -78,8 +78,9 @@ class CourseManager extends React.Component{
                  render={(props) =>
                    <CourseEditor {...props}/>}>
           </Route>
+          <i onClick={this.addCourse}className="fas fa-plus fa-2x float-right"></i>
         </div>
-    )
+    );
   }
 }
-export default CourseManager
+export default CourseManager;
