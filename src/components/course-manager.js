@@ -2,6 +2,8 @@ import React from 'react'
 import CourseTable from "./course-table";
 import CourseGrid from "./course-grid";
 import CourseEditor from "./course-editor"
+import {Route} from "react-router-dom";
+import {findAllCourses, deleteCourse} from "../services/course_service";
 
 class CourseManager extends React.Component{
   state = {
@@ -12,6 +14,10 @@ class CourseManager extends React.Component{
       {title:"CS5100", owner :"tony", lastModified:"01/17/2021"}
     ]
   }
+
+  componentDidMount = () =>
+    findAllCourses()
+      .then(courses => this.setState({courses}))
 
   addCourse = () => {
     const newCourse = {
@@ -24,9 +30,13 @@ class CourseManager extends React.Component{
   }
 
   deleteCourse = (courseToDelete) => {
-    const newCourses = this.state.courses.filter(course => course !== courseToDelete)
-    this.setState({
-      courses: newCourses
+    deleteCourse(courseToDelete._id)
+    .then(status => {
+      const newCourses = this.state.courses
+        .filter(course => course !== courseToDelete)
+        this.setState({
+          courses: newCourses
+        })
     })
   }
 
@@ -35,12 +45,22 @@ class CourseManager extends React.Component{
         <div>
           <h1>Course Manager</h1>
           <button onClick={this.addCourse}>Add Course</button>
-          <CourseTable deleteCourse={this.deleteCourse} courses={this.state.courses}/>
-          <CourseGrid deleteCourse={this.deleteCourse} courses={this.state.courses}/>
-          <CourseEditor/>
+          <Route path="/courses/table">
+            <CourseTable
+              deleteCourse={this.deleteCourse}
+              courses={this.state.courses}/>
+          </Route>
+          <Route path="/courses/grid">
+            <CourseGrid
+              deleteCourse={this.deleteCourse}
+              courses={this.state.courses}/>
+          </Route>
+          <Route path="/courses/editor"
+                 render={(props) =>
+                   <CourseEditor {...props}/>}>
+          </Route>
         </div>
     )
-
   }
 }
 export default CourseManager
