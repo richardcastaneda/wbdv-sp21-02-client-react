@@ -11,16 +11,17 @@ export default class CourseTable extends React.Component {
   render () {
     return(
       <div>
-        <h2>CourseTable</h2>
         <Link to="/courses/grid">
           <i className="fas float-right fa-2x fa-th"></i>
         </Link>
         <table className="table">
           <tbody>
             <thead>
-
+              <th>Title</th>
+              <th>Title</th>
+              <th>Title</th>
             </thead>
-          {
+            {
             this.props.courses.map((course, ndx) =>
               <CourseRow
                   updateCourse={this.props.updateCourse}

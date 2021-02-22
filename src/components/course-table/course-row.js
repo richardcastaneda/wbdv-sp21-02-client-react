@@ -27,6 +27,10 @@ const CourseRow = (
       <td>
         {
           !editing &&
+          <i className="icon file fas fa-file"></i>
+        }
+        {
+          !editing &&
           <Link to="/courses/editor">
             {title}
           </Link>
@@ -38,12 +42,12 @@ const CourseRow = (
             className="form-control"/>
         }
       </td>
-      <td>{owner}</td>
-      <td>{lastModified}</td>
+      <td class="d-none d-md-table-cell">{owner}</td>
+      <td class="d-none d-lg-table-cell">{lastModified}</td>
       <td>
         {editing && <i onClick={() => saveTitle()} className="icon fas fa-check"></i>}
-        {!editing && <i onClick={() => deleteCourse(course)} className="delete icon fas fa-trash"></i>}
-        {!editing && <i onClick={() => {setNewTitle(title); setEditing(true)}} className="icon fas fa-edit"></i>}
+        {editing && <i onClick={() => deleteCourse(course)} className="delete icon fas fa-trash"></i>}
+        {!editing && <i onClick={() => {setNewTitle(title); setEditing(true)}} className=" icon fas fa-edit"></i>}
       </td>
     </tr>)
     }

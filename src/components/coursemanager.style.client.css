@@ -1,0 +1,17 @@
+.rac-no-wrap{
+  overflow: visible;
+  white-space: nowrap;
+}
+
+.container{
+  margin: auto;
+  padding-top: 15px;
+}
+
+.file {
+  color: blue;
+}
+
+.rac-sticky-nav-bar{
+  padding-bottom: 15px;
+}
