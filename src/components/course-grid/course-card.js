@@ -25,16 +25,17 @@ const CourseCard = (
       }
 
       return (
-        <div className={"col-3"}>
+        <div className="col-md-4 col-sm-6 col-lg-3 col-xl-2 col-xs-1">
           <div className="card">
             <div className="card-body">
-              <img src={'../src/logo.svg'}/>
+              <img className="card-img-top" src="https://miro.medium.com/max/4800/1*yjH3SiDaVWtpBX0g_2q68g.png" alt="Card image cap">
+              </img>
               <h5 className="card-title">{course.title}</h5>
               <p className="card-text">Class Description</p>
               {
                 !editing &&
-              <i onClick={() => editing === true}
-                className="btn btn-primary float-left">{course.title}</i>
+              <Link to="/courses/editor" onClick={() => editing === true}
+                className="btn btn-primary float-left">{course.title}</Link>
               }
               {
                 editing &&
@@ -46,7 +47,7 @@ const CourseCard = (
               <div id="rac-action-icons">
               {!editing && <i onClick={() => deleteCourse(course)}className="icon delete fas fa-trash float-right"></i>}
               {editing && <i onClick={() => saveTitle()} className="icon fas fa-check float-left"></i>}
-              {!editing &&<i onClick={() => setEditing(true)} className="icon fas fa-edit float-right"></i>}
+              {!editing &&<i onClick={() => {setNewTitle(course.title); setEditing(true)}} className="icon fas fa-edit float-right"></i>}
 
               </div>
             </div>

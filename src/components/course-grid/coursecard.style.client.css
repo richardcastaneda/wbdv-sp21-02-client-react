@@ -1,7 +1,12 @@
 .icon{
-  padding: 10px;
+  padding: 5px;
 }
 
 .delete{
   color: red;
+}
+
+.grid-container{
+  margin: auto;
+  padding-top: 30px;
 }

@@ -7,11 +7,12 @@ const CourseGrid = ({
   deleteCourse,
   courses
 }) =>
-  <div>
+  <div class="grid-container">
+    <div>
     <Link to="/courses/table">
       <i className="fas fa-list fa-2x float-right"></i>
     </Link>
-    <h2>Course Grid</h2>
+    </div>
     <div className="row">
     {
       courses.map(course =>
