@@ -30,6 +30,7 @@ const CourseCard = (
             <div className="card-body">
               <img className="card-img-top" src="https://miro.medium.com/max/4800/1*yjH3SiDaVWtpBX0g_2q68g.png" alt="Card image cap">
               </img>
+              {!editing &&<i onClick={() => {setNewTitle(course.title); setEditing(true)}} className="icon fas fa-edit float-right"></i>}
               <h5 className="card-title">{course.title}</h5>
               <p className="card-text">Class Description</p>
               {
@@ -45,10 +46,8 @@ const CourseCard = (
                     className="form-control"/>
               }
               <div id="rac-action-icons">
-              {!editing && <i onClick={() => deleteCourse(course)}className="icon delete fas fa-trash float-right"></i>}
-              {editing && <i onClick={() => saveTitle()} className="icon fas fa-check float-left"></i>}
-              {!editing &&<i onClick={() => {setNewTitle(course.title); setEditing(true)}} className="icon fas fa-edit float-right"></i>}
-
+              {editing && <button onClick={() => deleteCourse(course)}className="btn btn-danger rac-delete fas fa-trash float-right"></button>}
+              {editing && <button onClick={() => saveTitle()} className="btn btn-success fas fa-check rac-check float-left"></button>}
               </div>
             </div>
           </div>

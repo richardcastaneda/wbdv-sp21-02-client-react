@@ -1,7 +1,13 @@
-.icon{
-  padding: 10px;
+#fas{
+  color: black;
 }
 
-.delete{
-  color: red;
+#rac-custom-button{
+  padding-left: 5px;
+  padding-right: 5px;
+  vertial-align: auto;
+}
+
+#icon{
+  color: black
 }

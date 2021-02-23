@@ -67,7 +67,7 @@ const CourseEditor = ({history}) =>
               <a className="nav-link active rac-pill-formatting"
                  id="v-module11"
                  data-toggle="pill"
-                 href="#v-module1"
+                 href=""
                  role="tab"
                  aria-controls="v-pills-home"
                  aria-selected="true">
@@ -77,7 +77,7 @@ const CourseEditor = ({history}) =>
               <a className="nav-link rac-pill-formatting"
                  id="v-module22"
                  data-toggle="pill"
-                 href="#v-module2"
+                 href=""
                  role="tab"
                  aria-controls="v-pills-profile"
                  aria-selected="false">
@@ -87,7 +87,7 @@ const CourseEditor = ({history}) =>
               <a className="nav-link rac-pill-formatting"
                  id="v-module33"
                  data-toggle="pill"
-                 href="#v-module3"
+                 href=""
                  role="tab"
                  aria-controls="v-pills-messages"
                  aria-selected="false">
@@ -97,7 +97,7 @@ const CourseEditor = ({history}) =>
               <a className="nav-link rac-pill-formatting"
                  id="v-module44"
                  data-toggle="pill"
-                 href="#v-module4"
+                 href=""
                  role="tab"
                  aria-controls="v-pills-settings"
                  aria-selected="false">
@@ -107,7 +107,7 @@ const CourseEditor = ({history}) =>
               <a className="nav-link rac-pill-formatting"
                  id="v-module55"
                  data-toggle="pill"
-                 href="#v-module5"
+                 href=""
                  role="tab"
                  aria-controls="v-pills-settings"
                  aria-selected="false">
@@ -117,7 +117,7 @@ const CourseEditor = ({history}) =>
               <a className="nav-link rac-pill-formatting"
                  id="v-module66"
                  data-toggle="pill"
-                 href="#v-module6"
+                 href=""
                  role="tab"
                  aria-controls="v-pills-settings"
                  aria-selected="false">
@@ -127,7 +127,7 @@ const CourseEditor = ({history}) =>
               <a className="nav-link"
                  id="v-module77"
                  data-toggle="pill"
-                 href="#v-module7"
+                 href=""
                  role="tab"
                  aria-controls="v-pills-settings"
                  aria-selected="false"><i

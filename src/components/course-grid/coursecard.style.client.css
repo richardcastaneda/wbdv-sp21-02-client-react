@@ -2,11 +2,10 @@
   padding: 5px;
 }
 
-.delete{
-  color: red;
-}
-
 .grid-container{
   margin: auto;
+}
+
+.rac-grid-contents{
   padding-top: 30px;
 }

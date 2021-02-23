@@ -1,15 +1,15 @@
 import React from 'react';
-import CourseTable from "./course-table/course-table";
-import CourseGrid from "./course-grid/course-grid";
-import CourseEditor from "./course-editor/course-editor"
+import CourseTable from "../course-table/course-table";
+import CourseGrid from "../course-grid/course-grid";
+import CourseEditor from "../course-editor/course-editor"
 import {Route} from "react-router-dom";
-import courseService from "../services/course-service";
+import courseService from "../../services/course-service";
 import './coursemanager.style.client.css'
 
 class CourseManager extends React.Component{
   state = {
     courses: [],
-  }
+  };
 
   updateCourse = (course) => {
     console.log(course);
@@ -30,7 +30,7 @@ class CourseManager extends React.Component{
     courseService.findAllCourses()
       .then(courses => this.setState({courses}));
 
-  addCourse = () => {
+  addCourse = (courseTitle = "New Course") => {
     const newCourse = {
       title: "New Course",
       owner: "New Owner",
@@ -55,59 +55,23 @@ class CourseManager extends React.Component{
         newState.courses =
           prevState.courses.filter(course => course !== courseToDelete)
           return newState;
-      })
+      });
     });
   }
 
   render() {
     return(
-        <div class="container">
+        <div className="container">
           <Route path="/courses/table">
-            <div className="rac-sticky-nav-bar">
-              <div className="row">
-                <div className="col-1 center">
-                  <i className="fas fa-bars fa-2x"></i>
-                </div>
-                <div className="col-2.5  d-none d-lg-block rac-no-wrap">
-                  <h4>Course Manager</h4>
-                </div>
-                <div className="col-8">
-                  <input type="text"
-                         id="newCourseTitle"
-                         className="form-control"
-                         placeholder="New Course Title"/>
-                </div>
-                <div className="col-0.7 center rac-reduced-padding">
-                  <i className="fas fa-plus fa-2x"></i>
-                </div>
-              </div>
-            </div>
             <CourseTable
+              addCourse={this.addCourse}
               updateCourse={this.updateCourse}
               deleteCourse={this.deleteCourse}
               courses={this.state.courses}/>
           </Route>
           <Route path="/courses/grid">
-            <div className="rac-sticky-nav-bar">
-              <div className="row">
-                <div className="col-1 center">
-                  <i className="fas fa-bars fa-2x"></i>
-                </div>
-                <div className="col-2.5  d-none d-lg-block rac-no-wrap">
-                  <h4>Course Manager</h4>
-                </div>
-                <div className="col-8">
-                  <input type="text"
-                         id="newCourseTitle"
-                         className="form-control"
-                         placeholder="New Course Title"/>
-                </div>
-                <div className="col-0.7 center rac-reduced-padding">
-                  <i className="fas fa-plus fa-2x"></i>
-                </div>
-              </div>
-            </div>
             <CourseGrid
+              addCourse={this.addCourse}
               updateCourse={this.updateCourse}
               deleteCourse={this.deleteCourse}
               courses={this.state.courses}/>
@@ -116,7 +80,7 @@ class CourseManager extends React.Component{
                  render={(props) =>
                    <CourseEditor {...props}/>}>
           </Route>
-          <i onClick={this.addCourse}className="fas fa-plus fa-2x float-right"></i>
+          <i onClick={this.addCourse} className="fas fa-plus fa-2x float-right"></i>
         </div>
     );
   }

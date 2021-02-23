@@ -46,9 +46,9 @@ const CourseRow = (
       <td class="d-none d-md-table-cell">{owner}</td>
       <td class="d-none d-lg-table-cell">{lastModified}</td>
       <td>
-        {editing && <i onClick={() => saveTitle()} className="icon fas fa-check"></i>}
-        {editing && <i onClick={() => deleteCourse(course)} className="delete icon fas fa-trash"></i>}
-        {!editing && <i onClick={() => {setNewTitle(title); setEditing(true)}} className=" icon fas fa-edit"></i>}
+        {editing && <button onClick={() => saveTitle()} className="rac-custom-button btn btn-success fas fa-check"></button>}
+        {editing && <button onClick={() => deleteCourse(course)} className="rac-custom-button btn btn-danger fas fa-trash"></button>}
+        {!editing && <i onClick={() => {setNewTitle(title); setEditing(true)}} className="icon fas fa-edit"></i>}
       </td>
     </tr>)
     }
