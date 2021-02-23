@@ -22,6 +22,7 @@ const CourseRow = (
       }
       updateCourse(newCourse);
     }
+
     return(
       <tr>
       <td>
