@@ -5,7 +5,9 @@ import EditableItem from "./editable-item";
 const ModuleList = (
     {
       myModules=[],
-      createModule=() => alert("Create Module 234")
+      createModule,
+      deleteModule,
+      updateModule
     }) =>
     <div>
       <h2>
@@ -13,9 +15,13 @@ const ModuleList = (
         <ul className='list-group'>
           {
             myModules.map(module =>
-                <li className='list=group=item'>
-                  <EditableItem item = {module}/>
-                </li>
+              <li className='list=group=item'>
+                <EditableItem
+                    updateItem = {updateModule}
+                    deleteItem = {deleteModule}
+                    item = {module}
+                />
+              </li>
             )
           }
           <li className='list=group=item'>
@@ -32,9 +38,17 @@ const stpm = (state) => {
 
 const dtpm = (dispatch) => {
   return {
-    createModule: () => dispatch({type: "CREATE_MODULE"})
+    createModule: () => dispatch({type: "CREATE_MODULE"}),
+    deleteModule: (item) => dispatch({
+      type: "DELETE_MODULE",
+      moduleToDelete: item
+    }),
+    updateModule: (module) => dispatch({
+      type: "UPDATE_MODULE",
+      module
+    })
   }
 }
 
 export default connect(stpm, dtpm)
-  (ModuleList)
+  (ModuleList);

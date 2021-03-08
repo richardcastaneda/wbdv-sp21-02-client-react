@@ -21,7 +21,29 @@ const moduleReducer = (state=initialState, action) => {
       }
       return newState;
     case "DELETE_MODULE":
-    case "UPDATE_MODULE": 
+      const newState2 = {
+        modules:
+            state.modules.filter(module => {
+              if(module._id === action.moduleToDelete._id) {
+                return false
+              } else {
+                return true
+              }
+            })
+      }
+      return newState2;
+
+    case "UPDATE_MODULE":
+      return {
+        modules:
+          state.modules.map(module => {
+            if (module._id === action.module._id){
+              return action.module;
+            } else {
+              return module;
+            }
+          })
+      }
     default:
       return state
   }
