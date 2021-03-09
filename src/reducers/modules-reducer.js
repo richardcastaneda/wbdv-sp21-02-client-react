@@ -1,22 +1,20 @@
 const initialState = {
- modules: [
-   {_id: 123, title: 'Module 123'},
-   {_id: 234, title: 'Module 234'},
-   {_id: 345, title: 'Module 345'}
- ]
+ modules: []
 }
 
 const moduleReducer = (state=initialState, action) => {
   switch (action.type) {
+    case "FIND_MODULES_FOR_COURSE":
+      return {
+        ...state,
+        modules: action.modules
+      }
     case "CREATE_MODULE":
       const newState = {
         modules:
         [
-            ...state.modules,
-          {
-            title: "New Module",
-            _id: (new Date().getTime()) //To be removed
-          }
+          ...state.modules,
+          action.module
         ]
       }
       return newState;
@@ -48,5 +46,4 @@ const moduleReducer = (state=initialState, action) => {
       return state
   }
 }
-
 export default moduleReducer

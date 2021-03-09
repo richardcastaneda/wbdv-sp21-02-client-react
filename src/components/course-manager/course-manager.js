@@ -2,7 +2,7 @@ import React from 'react';
 import CourseTable from "../course-table/course-table";
 import CourseGrid from "../course-grid/course-grid";
 import CourseEditor from "../course-editor/course-editor"
-import {Route} from "react-router-dom";
+import {Route, useParams} from "react-router-dom";
 import courseService from "../../services/course-service";
 import './coursemanager.style.client.css'
 
@@ -68,6 +68,7 @@ class CourseManager extends React.Component{
               updateCourse={this.updateCourse}
               deleteCourse={this.deleteCourse}
               courses={this.state.courses}/>
+            <i onClick={this.addCourse} className="fas fa-plus fa-2x float-right"></i>
           </Route>
           <Route path="/courses/grid">
             <CourseGrid
@@ -75,12 +76,14 @@ class CourseManager extends React.Component{
               updateCourse={this.updateCourse}
               deleteCourse={this.deleteCourse}
               courses={this.state.courses}/>
+            <i onClick={this.addCourse} className="fas fa-plus fa-2x float-right"></i>
           </Route>
-          <Route path="/courses/editor"
+          <Route path={["/courses/editor/:courseId/",
+                        "/courses/editor/:courseId/:moduleId/",
+                        "/courses/editor/:courseId/:moduleId/:lessonId",]}
                  render={(props) =>
                    <CourseEditor {...props}/>}>
           </Route>
-          <i onClick={this.addCourse} className="fas fa-plus fa-2x float-right"></i>
         </div>
     );
   }

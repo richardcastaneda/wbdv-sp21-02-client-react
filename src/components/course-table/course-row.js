@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import './courserow.style.client.css';
 
 const CourseRow = (
@@ -32,7 +32,7 @@ const CourseRow = (
         }
         {
           !editing &&
-          <Link to="/courses/editor">
+          <Link to={`/courses/editor/${course._id}`}>
             {title}
           </Link>
         }{
