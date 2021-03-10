@@ -50,6 +50,6 @@ const EditableItem = (
         }
     </>
   )
-}
+};
 
 export default EditableItem

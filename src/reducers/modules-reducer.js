@@ -18,6 +18,7 @@ const moduleReducer = (state=initialState, action) => {
         ]
       }
       return newState;
+
     case "DELETE_MODULE":
       const newState2 = {
         modules:

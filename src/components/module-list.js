@@ -12,7 +12,7 @@ const ModuleList = (
       updateModule,
       findModulesForCourse,
     }) => {
-      const {courseId} = useParams();
+      const {courseId, moduleId} = useParams();
       useEffect(() => {
         findModulesForCourse(courseId)
       }, [])
@@ -20,10 +20,10 @@ const ModuleList = (
         <div>
           <h2>
             Modules {myModules.length}</h2>
-            <ul className='list-group list-group-item-action active'>
+            <ul className='list-group'>
               {
                 myModules.map(module =>
-                  <li className='list-group-item list-group-item-action'>
+                  <li className={`rac-selectable-group list-group-item ${module._id === moduleId ? 'active' : ''}`}>
                     <EditableItem
                       to={`/courses/editor/${courseId}/${module._id}`}
                       updateItem = {updateModule}

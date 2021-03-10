@@ -78,7 +78,7 @@ class CourseManager extends React.Component{
               courses={this.state.courses}/>
             <i onClick={this.addCourse} className="fas fa-plus fa-2x float-right"></i>
           </Route>
-          <Route path={["/courses/editor/:courseId/",
+          <Route exact path={["/courses/editor/:courseId/",
                         "/courses/editor/:courseId/:moduleId/",
                         "/courses/editor/:courseId/:moduleId/:lessonId",]}
                  render={(props) =>

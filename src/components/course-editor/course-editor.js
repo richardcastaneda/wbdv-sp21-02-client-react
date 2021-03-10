@@ -10,7 +10,7 @@ import TopicTabs from "../topic-tabs";
 import lessonReducer from "../../reducers/lesson-reducer";
 import topicReducer from "../../reducers/topic-reducer";
 
-// Two sub redicers contributing to the overall state, superreducer
+// Two sub reducers contributing to the overall state, super reducer
 const reducer = combineReducers({
   moduleReducer: moduleReducer,
   lessonReducer: lessonReducer,
