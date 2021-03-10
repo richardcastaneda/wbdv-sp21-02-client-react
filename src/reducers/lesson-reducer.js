@@ -37,6 +37,7 @@ switch(action.type){
           }
         })
     }
+
   case "FIND_LESSONS":
     return {
       ...state,

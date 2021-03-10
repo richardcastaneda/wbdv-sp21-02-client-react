@@ -1,25 +1,17 @@
 const initialState =  {
-  topics: [
-    {_id: '123', title: "topic 123"},
-    {_id: '234', title: "topic 234"},
-    {_id: '345', title: "topic 345"},
-  ]
+  topics: []
 }
 
 const topicReducer = (state=initialState, action) => {
   switch(action.type){
     case "CREATE_TOPIC":
-      const newState = {
-        topics:
-            [
-              ...state.topics,
-              {
-                title: "New Topic",
-                _id: (new Date().getTime()) //to be removed
-              }
-            ]
+      return{
+        ...state,
+        topics: [
+          ...state.topics,
+          action.topic
+        ]
       }
-      return newState;
 
     case "DELETE_TOPIC":
       const newState2 = {
@@ -45,6 +37,13 @@ const topicReducer = (state=initialState, action) => {
               }
             })
       }
+
+    case "FIND_TOPICS":
+      return {
+        ...state,
+        topics: action.topics
+      }
+
     default:
       return state;
   }

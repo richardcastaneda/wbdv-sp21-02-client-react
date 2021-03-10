@@ -1,19 +1,19 @@
 import React, {useEffect} from 'react';
 import {connect} from 'react-redux';
-import EditableItem from "./editable-item";
+import EditableItem from "../editable-item";
 import {Link, useParams} from "react-router-dom";
-import lessonService from '../services/lesson-service';
+import lessonService from '../../services/lesson-service';
 
 const LessonTabs = (
     {
       lessons=[],
-        deleteLesson,
-        updateLesson,
-        findLessonsForModule,
-        createLessonForModule
+      deleteLesson,
+      updateLesson,
+      findLessonsForModule,
+      createLessonForModule
     }) =>
     {
-      const {courseId, moduleId, lessonId} = useParams();
+      const {courseId, moduleId, lessonId, layout} = useParams();
 
       useEffect(() => {
         console.log(moduleId)
@@ -31,7 +31,7 @@ const LessonTabs = (
             lessons.map(lesson =>
                 <li className={`rac-selectable-group nav-link ${lesson._id === lessonId ? 'active' : ''}`}>
                     <EditableItem
-                        to={`/courses/editor/${courseId}/${moduleId}/${lesson._id}/`}
+                        to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lesson._id}/`}
                         updateItem={updateLesson}
                         deleteItem={deleteLesson}
                         item={lesson}

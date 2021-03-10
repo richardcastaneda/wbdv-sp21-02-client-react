@@ -10,6 +10,7 @@ const CourseCard = (
       title,
       owner,
       lastModified,
+      layout = "grid"
     }) => {
 
       const [editing, setEditing] = useState(false);
@@ -35,7 +36,7 @@ const CourseCard = (
               <p className="card-text">Class Description</p>
               {
                 !editing &&
-              <Link to="/courses/editor" onClick={() => editing === true}
+              <Link to={`/courses/${layout}/edit/${course._id}`} onClick={() => editing === true}
                 className="btn btn-primary float-left">{course.title}</Link>
               }
               {

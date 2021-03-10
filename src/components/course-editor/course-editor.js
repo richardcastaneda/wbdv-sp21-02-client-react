@@ -4,9 +4,9 @@ import './courseeditor.style.client.css';
 import moduleReducer from "../../reducers/modules-reducer";
 import {combineReducers, createStore} from "redux";
 import {Provider} from 'react-redux';
-import ModuleList from "../module-list";
-import LessonTabs from "../lesson-tabs";
-import TopicTabs from "../topic-tabs";
+import ModuleList from "./module-list";
+import LessonTabs from "./lesson-tabs";
+import TopicTabs from "./topic-pills";
 import lessonReducer from "../../reducers/lesson-reducer";
 import topicReducer from "../../reducers/topic-reducer";
 
@@ -20,14 +20,14 @@ const reducer = combineReducers({
 const store = createStore(reducer)
 
 const CourseEditor = ({history}) => {
-  const {courseId} = useParams();
+  const {courseId, layout} = useParams();
   return (
     <Provider store={store}>
       <div className="container">
         <h2>
-          <Link to="/courses/table">
-            <i className="fas fa-arrow-left"></i>
-          </Link>s
+          <Link to={`/courses/${layout}`}>
+            <i className="fas fa-times"></i>
+          </Link>
           Course Editor
           <i onClick={() => history.goBack()}
              className="fas fa-times float-right"></i>

@@ -62,7 +62,7 @@ class CourseManager extends React.Component{
   render() {
     return(
         <div className="container">
-          <Route path="/courses/table">
+          <Route exact path="/courses/table">
             <CourseTable
               addCourse={this.addCourse}
               updateCourse={this.updateCourse}
@@ -70,7 +70,7 @@ class CourseManager extends React.Component{
               courses={this.state.courses}/>
             <i onClick={this.addCourse} className="fas fa-plus fa-2x float-right"></i>
           </Route>
-          <Route path="/courses/grid">
+          <Route exact path="/courses/grid">
             <CourseGrid
               addCourse={this.addCourse}
               updateCourse={this.updateCourse}
@@ -78,9 +78,10 @@ class CourseManager extends React.Component{
               courses={this.state.courses}/>
             <i onClick={this.addCourse} className="fas fa-plus fa-2x float-right"></i>
           </Route>
-          <Route exact path={["/courses/editor/:courseId/",
-                        "/courses/editor/:courseId/:moduleId/",
-                        "/courses/editor/:courseId/:moduleId/:lessonId",]}
+          <Route exact path={["/courses/:layout/edit",
+                        "/courses/:layout/edit/:courseId/",
+                        "/courses/:layout/edit/:courseId/modules/:moduleId/",
+                        "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId",]}
                  render={(props) =>
                    <CourseEditor {...props}/>}>
           </Route>

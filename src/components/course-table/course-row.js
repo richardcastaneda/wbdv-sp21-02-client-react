@@ -9,7 +9,8 @@ const CourseRow = (
       course,
       title,
       owner,
-      lastModified
+      lastModified,
+      layout = "table"
     }) => {
     const [editing, setEditing] = useState(false);
     const [newTitle, setNewTitle] = useState(title);
@@ -32,7 +33,7 @@ const CourseRow = (
         }
         {
           !editing &&
-          <Link to={`/courses/editor/${course._id}`}>
+          <Link to={`/courses/${layout}/edit/${course._id}`}>
             {title}
           </Link>
         }{
