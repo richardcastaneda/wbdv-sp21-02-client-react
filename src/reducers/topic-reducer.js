@@ -38,7 +38,7 @@ const topicReducer = (state=initialState, action) => {
             })
       }
 
-    case "FIND_TOPICS":
+    case "FIND_TOPICS_FOR_LESSON":
       return {
         ...state,
         topics: action.topics

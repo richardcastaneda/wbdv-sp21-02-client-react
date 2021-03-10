@@ -12,14 +12,17 @@ const ModuleList = (
       updateModule,
       findModulesForCourse,
     }) => {
-      const {courseId, moduleId, layout} = useParams();
+      const {layout, courseId, moduleId} = useParams();
+
       useEffect(() => {
         findModulesForCourse(courseId)
       }, [])
+
       return(
         <div>
           <h2>
-            Modules {myModules.length}</h2>
+            Modules
+          </h2>
             <ul className='list-group'>
               {
                 myModules.map(module =>

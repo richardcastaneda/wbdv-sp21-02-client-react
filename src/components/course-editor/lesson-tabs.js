@@ -13,11 +13,10 @@ const LessonTabs = (
       createLessonForModule
     }) =>
     {
-      const {courseId, moduleId, lessonId, layout} = useParams();
+      const {layout, courseId, moduleId, lessonId} = useParams();
 
       useEffect(() => {
-        console.log(moduleId)
-        if(moduleId !== "undefined" && typeof moduleId !== "undefined")
+        if(moduleId !== "undefined" && typeof moduleId !== undefined)
         findLessonsForModule(moduleId)
       }, [moduleId])
 
@@ -29,14 +28,14 @@ const LessonTabs = (
         <ul className="nav nav-tabs">
           {
             lessons.map(lesson =>
-                <li className={`rac-selectable-group nav-link ${lesson._id === lessonId ? 'active' : ''}`}>
-                    <EditableItem
-                        to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lesson._id}/`}
-                        updateItem={updateLesson}
-                        deleteItem={deleteLesson}
-                        item={lesson}
-                    />
-                </li>
+              <li className={`rac-selectable-group nav-link ${lesson._id === lessonId ? 'active' : ''}`}>
+                <EditableItem
+                  to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lesson._id}/`}
+                  updateItem={updateLesson}
+                  deleteItem={deleteLesson}
+                  item={lesson}
+                />
+              </li>
             )
           }
           <li className='list-group-item'>
@@ -79,7 +78,7 @@ const dtpm = (dispatch) => ({
     findLessonsForModule: (moduleId) => {
       lessonService.findLessonsForModule(moduleId)
         .then(lessons => dispatch ({
-          type: "FIND_LESSONS",
+          type: "FIND_LESSONS_FOR_MODULE",
           lessons
         }))
     },

@@ -7,45 +7,44 @@ import topicService from "../../services/topic-service";
 const TopicPills = (
     {
       topics=[],
-      createTopics,
-      deleteTopics,
-      findTopics,
-      updateTopics,
+      createTopic,
+      deleteTopic,
+      findTopic,
+      updateTopic,
     }) =>
   {
-  const {courseId, moduleId, lessonId, layout, topicId} = useParams();
-  useEffect(() => {
-    if(lessonId !== "undefined" && typeof lessonId !== "undefined")
-      findTopics(lessonId)
-  }, [lessonId])
+    const {courseId, moduleId, lessonId, layout, topicId} = useParams();
 
-  return (
+    useEffect(() => {
+      if(typeof lessonId !== undefined && typeof lessonId !== "undefined")
+        findTopic(lessonId)
+    }, [lessonId, moduleId])
+
+    return (
       <div>
         <h2>
-          Topics {topics.length}
+          Topics
         </h2>
-        <ul className="nav nav-tabs">
+        <ul className="nav nav-pills">
           {
             topics.map(topic =>
-                <li className={`rac - selectable - group nav-item ${topic._id === topicId ? 'active' : ''}`}>
-                  <a className="nav-link" href="#">
-                    <EditableItem
-                        to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/${topic._id}/`}
-                        updateItem={updateTopics}
-                        deleteItem={deleteTopics}
-                        item={topic}
-                    />
-                  </a>
-                </li>
+              <li className={`rac-selectable-group nav-item ${topic._id === topicId ? 'active' : ''}`}>
+              <EditableItem
+                to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}/`}
+                updateItem={updateTopic}
+                deleteItem={deleteTopic}
+                item={topic}
+              />
+              </li>
             )
           }
           <li className='list-group-item'>
-            <i onClick={createTopics}
+            <i onClick={() => createTopic(lessonId)}
                className="rac-plus-icon fas fa-plus fa-2x"></i>
           </li>
         </ul>
       </div>
-  )
+    )
 }
 
 //Read from the state
@@ -55,34 +54,35 @@ const stpm = (state) => ({
 
 //MAniupulate the state
 const dtpm = (dispatch) => ({
-  createTopics: (lessonId) =>
-      topicService.createTopics(lessonId, {title: "New Topics"})
+  createTopic: (lessonId) =>
+      topicService.createTopic(lessonId, {title: "New Topic"})
       .then(theActualTopic =>
           dispatch({
             type: "CREATE_TOPIC",
             topic: theActualTopic
           })),
-  deleteTopics: (item) =>
-      topicService.deleteTopics(item._id)
+  deleteTopic: (item) =>
+      topicService.deleteTopic(item._id)
       .then(status =>
           dispatch({
             type: "DELETE_TOPIC",
             topicToDelete: item
           })),
-  updateTopics: (topic) => topicService.updateTopics(topic._id, topic)
+  updateTopic: (topic) => topicService.updateTopic(topic._id, topic)
   .then(status =>
       dispatch({
         type: "UPDATE_TOPIC",
         topic
       })),
 
-  findTopics: (lessonId) => {
-    topicService.findTopics(lessonId)
+  findTopic: (lessonId) => {
+    topicService.findTopic(lessonId)
     .then(topics => dispatch ({
-      type: "FIND_TOPICS",
+      type: "FIND_TOPICS_FOR_LESSON",
       topics
     }))
   },
 })
+
 export default connect(stpm, dtpm)
 (TopicPills);

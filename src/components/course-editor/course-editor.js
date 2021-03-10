@@ -19,7 +19,7 @@ const reducer = combineReducers({
 
 const store = createStore(reducer)
 
-const CourseEditor = ({history}) => {
+const CourseEditor = () => {
   const {courseId, layout} = useParams();
   return (
     <Provider store={store}>
@@ -28,9 +28,7 @@ const CourseEditor = ({history}) => {
           <Link to={`/courses/${layout}`}>
             <i className="fas fa-times"></i>
           </Link>
-          Course Editor
-          <i onClick={() => history.goBack()}
-             className="fas fa-times float-right"></i>
+          Course Editor {}
         </h2>
         <div className="row">
           <div className="col-4">

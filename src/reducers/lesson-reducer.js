@@ -38,7 +38,7 @@ switch(action.type){
         })
     }
 
-  case "FIND_LESSONS":
+  case "FIND_LESSONS_FOR_MODULE":
     return {
       ...state,
       lessons: action.lessons

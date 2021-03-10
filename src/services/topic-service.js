@@ -1,39 +1,39 @@
 const LESSONS_URL = "https://wbdv-generic-server.herokuapp.com/api/castanedar/lessons";
 const TOPICS_URL = "https://wbdv-generic-server.herokuapp.com/api/castanedar/topics";
 
-export const findTopics = (moduleId) =>
-    fetch(`${LESSONS_URL}/${moduleId}/lessons`)
+export const findTopic = (lessonId) =>
+    fetch(`${LESSONS_URL}/${lessonId}/topics`)
     .then(response => response.json())
 
-export const createTopics = (moduleId, newLesson) =>
-    fetch(`${LESSONS_URL}/${moduleId}/lessons`, {
+export const createTopic = (lessonId, newTopic) =>
+    fetch(`${LESSONS_URL}/${lessonId}/topics`, {
       method: "POST",
-      body: JSON.stringify(newLesson),
+      body: JSON.stringify(newTopic),
       headers: {
         'content-type': 'application/json'
       }
     })
     .then(response => response.json())
 
-export const updateTopics = (lessonId, lesson) =>
-    fetch(`${TOPICS_URL}/${lessonId}`, {
+export const updateTopic = (topicId, topic) =>
+    fetch(`${TOPICS_URL}/${topicId}`, {
       method: "PUT",
-      body: JSON.stringify(lesson),
+      body: JSON.stringify(topic),
       headers: {
         'content-type': 'application/json'
       }
     })
     .then(response => response.json())
 
-export const deleteTopic = (lessonId) =>
-    fetch(`${TOPICS_URL}/${lessonId}`, {
+export const deleteTopic = (topicId) =>
+    fetch(`${TOPICS_URL}/${topicId}`, {
       method: "DELETE"
     })
     .then(response => response.json())
 
 export default {
-  findTopics,
-  createTopics,
-  updateTopics,
+  findTopic,
+  createTopic,
+  updateTopic,
   deleteTopic
 }
