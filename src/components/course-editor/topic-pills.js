@@ -14,11 +14,12 @@ const TopicPills = (
     }) =>
   {
     const {courseId, moduleId, lessonId, layout, topicId} = useParams();
+    console.log(topicId)
 
     useEffect(() => {
       if(typeof lessonId !== undefined && typeof lessonId !== "undefined")
         findTopic(lessonId)
-    }, [lessonId, moduleId])
+    }, [lessonId, moduleId, topicId])
 
     return (
       <div>

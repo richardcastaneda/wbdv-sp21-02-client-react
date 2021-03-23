@@ -9,6 +9,7 @@ import LessonTabs from "./lesson-tabs";
 import TopicTabs from "./topic-pills";
 import lessonReducer from "../../reducers/lesson-reducer";
 import topicReducer from "../../reducers/topic-reducer";
+import WidgetList from "./widgets/widget-list";
 
 // Two sub reducers contributing to the overall state, super reducer
 const reducer = combineReducers({
@@ -36,7 +37,10 @@ const CourseEditor = () => {
           </div>
           <div className="col-8">
             <LessonTabs/>
+            <br/>
             <TopicTabs/>
+            <br/>
+            <WidgetList/>
           </div>
         </div>
       </div>
