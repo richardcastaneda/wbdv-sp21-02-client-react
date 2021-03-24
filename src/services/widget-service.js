@@ -15,7 +15,7 @@ export const createWidget = (tid, widget) =>
     .then(response => response.json())
 
 export const updateWidget = (wid, widget) =>
-    fetch(`${URL}/${wid}`, {
+    fetch(`${URL}/widgets/${wid}`, {
       method: "PUT",
       body: JSON.stringify(widget),
       headers: {
@@ -25,7 +25,7 @@ export const updateWidget = (wid, widget) =>
     .then(response => response.json())
 
 export const deleteWidget = (wid) =>
-    fetch(`${URL}/${wid}`, {
+    fetch(`${URL}/widgets/${wid}`, {
       method: "DELETE"
     })
     .then(response => response.json())
