@@ -6,7 +6,7 @@ const ParagraphWidget = ({widget, editing}) => {
       {
         editing &&
       <>
-        <textarea value={widget.text} className="form-control"></textarea>
+        <textarea placeholder={widget.text} className="form-control"></textarea>
       </>
       }
       {

@@ -9,7 +9,7 @@ import LessonTabs from "./lesson-tabs";
 import TopicTabs from "./topic-pills";
 import lessonReducer from "../../reducers/lesson-reducer";
 import topicReducer from "../../reducers/topic-reducer";
-import WidgetList from "./widgets/widget-list";
+import WidgetList from "../widgets/widget-list";
 import widgetReducer from "../../reducers/widget-reducer";
 
 

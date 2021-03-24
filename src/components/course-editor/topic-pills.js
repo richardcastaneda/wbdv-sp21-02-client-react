@@ -16,7 +16,7 @@ const TopicPills = (
     const {courseId, moduleId, lessonId, topicId, layout} = useParams();
 
     useEffect(() => {
-      if(typeof lessonId !== undefined && typeof lessonId !== "undefined")
+      if(typeof lessonId !== undefined && lessonId !== "undefined")
         findTopic(lessonId)
     }, [lessonId, moduleId, topicId])
 
@@ -30,7 +30,7 @@ const TopicPills = (
             topics.map(topic =>
               <li className={`rac-selectable-group nav-item ${topic._id === topicId ? 'active' : ''}`}>
               <EditableItem
-                to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/ABC123/`}
+                to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}/`}
                 updateItem={updateTopic}
                 deleteItem={deleteTopic}
                 item={topic}

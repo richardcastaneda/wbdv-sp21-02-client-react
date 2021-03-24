@@ -1,12 +1,26 @@
-import React from 'react'
+import React, {useState} from 'react'
+import widgetService from "../../services/widget-service";
+import {connect} from "react-redux";
 
-const HeadingWidget = ({widget, editing}) => {
+const HeadingWidget = (
+    {
+  widget,
+  editing,
+  item={},
+  updateWidget,
+    }) => {
+  const [cachedHeading, setCachedHeading] = useState(item);
   return(
       <>
         {
           editing &&
           <>
-            <input placeholder={widget.text} className="form-control"></input>
+            <input
+                onChange = {(edits) => setCachedHeading({
+                ...cachedHeading,
+                title: edits.target.value
+                })}
+                placeholder={widget.text} className="form-control"></input>
             <select className="form-control">
               <option value={1}>Heading 1</option>
               <option value={2}>Heading 2</option>
@@ -32,5 +46,30 @@ const HeadingWidget = ({widget, editing}) => {
   )
 }
 
+//Read from the state
+const stpm = (state) => ({
+  widgets: state.widgetReducer.widgets
+})
 
-export default HeadingWidget
+//Manipulate the state
+const dtpm = (dispatch) => ({
+
+  deleteWidget:(wid) =>
+      widgetService.deleteWidget(wid)
+      .then(status =>
+          dispatch({
+            type: "DELETE_WIDGET",
+            widgetToDelete: wid
+          })),
+
+  updateWidget: (wid, widget) => widgetService.updateWidget(wid, widget)
+  .then(theNewWidget =>
+      dispatch({
+        type: "UPDATE_WIDGET",
+        theNewWidget: theNewWidget
+      }))
+})
+
+export default connect(stpm, dtpm)
+(HeadingWidget);
+
