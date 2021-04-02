@@ -46,30 +46,29 @@ const HeadingWidget = (
   )
 }
 
-//Read from the state
-const stpm = (state) => ({
-  widgets: state.widgetReducer.widgets
-})
+// //Read from the state
+// const stpm = (state) => ({
+//   widgets: state.widgetReducer.widgets
+// })
+//
+// //Manipulate the state
+// const dtpm = (dispatch) => ({
+//
+//   deleteWidget:(wid) =>
+//       widgetService.deleteWidget(wid)
+//       .then(status =>
+//           dispatch({
+//             type: "DELETE_WIDGET",
+//             widgetToDelete: wid
+//           })),
+//
+//   updateWidget: (wid, widget) => widgetService.updateWidget(wid, widget)
+//   .then(theNewWidget =>
+//       dispatch({
+//         type: "UPDATE_WIDGET",
+//         theNewWidget: theNewWidget
+//       }))
+// })
 
-//Manipulate the state
-const dtpm = (dispatch) => ({
-
-  deleteWidget:(wid) =>
-      widgetService.deleteWidget(wid)
-      .then(status =>
-          dispatch({
-            type: "DELETE_WIDGET",
-            widgetToDelete: wid
-          })),
-
-  updateWidget: (wid, widget) => widgetService.updateWidget(wid, widget)
-  .then(theNewWidget =>
-      dispatch({
-        type: "UPDATE_WIDGET",
-        theNewWidget: theNewWidget
-      }))
-})
-
-export default connect(stpm, dtpm)
-(HeadingWidget);
+export default HeadingWidget
 

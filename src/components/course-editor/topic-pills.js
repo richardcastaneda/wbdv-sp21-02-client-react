@@ -55,7 +55,8 @@ const stpm = (state) => ({
 //MAniupulate the state
 const dtpm = (dispatch) => ({
   createTopic: (lessonId) =>
-      topicService.createTopic(lessonId, {title: "New Topic"})
+      topicService.createTopic(lessonId,
+{title: "New Topic"})
       .then(theActualTopic =>
           dispatch({
             type: "CREATE_TOPIC",
@@ -81,7 +82,7 @@ const dtpm = (dispatch) => ({
       type: "FIND_TOPICS_FOR_LESSON",
       topics
     }))
-  },
+  }
 })
 
 export default connect(stpm, dtpm)

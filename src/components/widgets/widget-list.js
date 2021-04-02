@@ -1,16 +1,18 @@
 import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux'
 import HeadingWidget from "./heading-widget";
+import ListWidget from "./list-widget";
 import ParagraphWidget from "./paragraph-widget";
 import {useParams} from "react-router-dom";
 import widgetService from "../../services/widget-service";
+import ImageWidget from "./image-widget";
 
 const WidgetList = (
     {
       widgets=[],
         createWidget,
         deleteWidget,
-        findWidget,
+        findWidgets,
         updateWidget,
     }) =>
 {
@@ -18,7 +20,7 @@ const WidgetList = (
   const [selectedWidget, setSelectedWidget] = useState({});
   useEffect(() => {
     if(typeof topicId !== undefined && topicId !== "undefined")
-      findWidget(topicId)
+      findWidgets(topicId)
   }, [topicId])
 
   return (
@@ -59,6 +61,18 @@ const WidgetList = (
                       editing={selectedWidget.id === widget.id}
                       widget = {widget}/>
                 }
+                {
+                  widget.type === "LIST" &&
+                  <ListWidget
+                      editing={selectedWidget.id === widget.id}
+                      widget = {widget}/>
+                }
+                {
+                  widget.type === "IMAGE" &&
+                  <ImageWidget
+                      editing={selectedWidget.id === widget.id}
+                      widget = {widget}/>
+                }
               </li>
               )
             }
@@ -76,35 +90,34 @@ const stpm = (state) => ({
 //Manipulate the state
 const dtpm = (dispatch) => ({
   createWidget: (topicId) =>
-    widgetService.createWidget(topicId, {type: "HEADING", text: "New Widget", size: 1})
-    .then(theActualWidget =>
-        dispatch({
-          type: "CREATE_WIDGET",
-          theActualWidget: theActualWidget
-        })),
+      widgetService.createWidget(topicId,
+          {type: "HEADING", text: "New Widget", size: 1})
+      .then(theActualWidget =>
+          dispatch({
+            type: "CREATE_WIDGET",
+            theActualWidget: theActualWidget
+          })),
 
-  deleteWidget:(wid) =>
-    widgetService.deleteWidget(wid)
-    .then(status =>
-        dispatch({
-          type: "DELETE_WIDGET",
-          widgetToDelete: wid
-        })),
+  deleteWidget: (wid) =>
+      widgetService.deleteWidget(wid)
+      .then(status =>
+          dispatch({
+            type: "DELETE_WIDGET",
+            widgetToDelete: wid
+          })),
 
   updateWidget: (wid, widget) => widgetService.updateWidget(wid, widget)
-  .then(theNewWidget =>
-      dispatch({
-        type: "UPDATE_WIDGET",
-        theNewWidget: theNewWidget
-      })),
+  .then(status => dispatch({
+    type: "UPDATE_WIDGET",
+    updatedWidget : widget
+  })),
 
-  findWidget: (topicId) => {
+  findWidgets: (topicId) =>
     widgetService.findWidgetsForTopic(topicId)
-    .then(theWidgets => dispatch ({
+    .then(theWidgets => dispatch({
       type: "FIND_ALL_WIDGETS_FOR_TOPIC",
-      widgets: theWidgets
+      theWidgets
     }))
-  }
 })
 
 export default connect(stpm, dtpm)

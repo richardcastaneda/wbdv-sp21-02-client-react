@@ -30,8 +30,8 @@ const widgetReducer = (state=initialState, action) => {
       return {
         widgets:
             state.widgets.map(widget => {
-              if(widget.id === action.theNewWidget.id) {
-                return action.theNewWidget;
+              if(widget.id === action.updatedWidget.id) {
+                return action.updatedWidget;
               } else {
                 return widget;
               }
@@ -41,7 +41,7 @@ const widgetReducer = (state=initialState, action) => {
     case "FIND_ALL_WIDGETS_FOR_TOPIC":
       return {
         ...state,
-        widgets: action.widgets
+        widgets: action.theWidgets
       }
 
     default:
