@@ -46,6 +46,8 @@ const CourseRow = (
       </td>
       <td class="d-none d-md-table-cell">{owner}</td>
       <td class="d-none d-lg-table-cell">{lastModified}</td>
+      <td><Link to={`/courses/${course._id}/quizzes`}>
+        Quizzes</Link></td>
       <td>
         {editing && <button onClick={() => saveTitle()} className="rac-custom-button btn btn-success fas fa-check"></button>}
         {editing && <button onClick={() => deleteCourse(course)} className="rac-custom-button btn btn-danger fas fa-trash"></button>}

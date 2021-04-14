@@ -5,6 +5,7 @@ import CourseEditor from "../course-editor/course-editor"
 import {Route, useParams} from "react-router-dom";
 import courseService from "../../services/course-service";
 import './coursemanager.style.client.css'
+import QuizzesList from '../quizzes/quizzes-list.js';
 
 class CourseManager extends React.Component{
   state = {
