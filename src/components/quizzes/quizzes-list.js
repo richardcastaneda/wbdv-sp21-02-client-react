@@ -7,7 +7,7 @@ const QuizzesList = () => {
   const {cid} = useParams();
   const [quizzes, setQuizzes] = useState([])
   useEffect(() => {
-    fetch("https://rocky-river-27817.herokuapp.com/api/quizzes")
+    fetch("https://pure-shore-12573.herokuapp.com/api/quizzes")
     .then(response => response.json())
     .then((quizzes) => {
       setQuizzes(quizzes)

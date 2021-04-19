@@ -1,19 +1,19 @@
-const remoteURL = "https://rocky-river-27817.herokuapp.com/api/castanedar"
+const remoteURL = "https://rocky-river-27817.herokuapp.com/api"
 const localURL = "http://localhost:8080/api/widgets"
 
 const findWidgetsForTopic = (topicId) =>
-  fetch(`http://localhost:8080/api/topics/${topicId}/widgets`)
+  fetch(`${remoteURL}/topics/${topicId}/widgets`)
   .then(response => response.json())
 
 
 const deleteWidget = (wid) =>
-    fetch(`http://localhost:8080/api/widgets/${wid}`, {
+    fetch(`${remoteURL}/api/widgets/${wid}`, {
       method: "DELETE",
     }).then(response => response.json())
 
 
 const updateWidget = (wid, widget) =>
-  fetch(`http://localhost:8080/api/widgets/${wid}`, {
+  fetch(`${remoteURL}/api/widgets/${wid}`, {
     method: "PUT",
     body: JSON.stringify(widget),
     headers: {
@@ -23,7 +23,7 @@ const updateWidget = (wid, widget) =>
 
 
 const createWidget = (topicId) =>
-  fetch(`http://localhost:8080/api/topics/${topicId}/widgets`,{
+  fetch(`${remoteURL}/topics/${topicId}/widgets`,{
     method: "POST",
     body: JSON.stringify({type: "HEADING", size: 1, text: "New Widget"}),
     headers: {
