@@ -18,6 +18,7 @@ export const updateModuleForCourse = (moduleId, module) =>
       body: JSON.stringify(module),
       headers: {
         'content-type': 'application/json'
+
       }
     })
     .then(response => response.json())

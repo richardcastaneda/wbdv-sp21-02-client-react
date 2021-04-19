@@ -1,4 +1,4 @@
-const remoteURL = "https://wbdv-generic-server.herokuapp.com/api/castanedar"
+const remoteURL = "https://rocky-river-27817.herokuapp.com/api/castanedar"
 const localURL = "http://localhost:8080/api/widgets"
 
 const findWidgetsForTopic = (topicId) =>
