@@ -1,17 +1,20 @@
 import React, {useState, useEffect} from 'react';
 import {Link, useParams} from "react-router-dom";
 import "./quizzes-list.css";
+import quizService from "../../services/quiz-service";
 
 const QuizzesList = () => {
 
   const {cid} = useParams();
   const [quizzes, setQuizzes] = useState([])
+
   useEffect(() => {
-    fetch("https://pure-shore-12573.herokuapp.com/api/quizzes")
-    .then(response => response.json())
-    .then((quizzes) => {
-      setQuizzes(quizzes)
-    })
+    // fetch("https://pure-shore-12573.herokuapp.com/api/quizzes")
+    // .then(response => response.json())
+    // .then((quizzes) => {
+    //   setQuizzes(quizzes)
+    // })
+    quizService.findAllQuizzes()
   }, [])
 
     return(
